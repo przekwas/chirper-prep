@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-
+import React, { Component } from 'react';
+import ChirpCard from './ChirpCard';
 
 export default class ChirpTimeline extends Component {
     constructor(props) {
@@ -30,14 +30,14 @@ export default class ChirpTimeline extends Component {
 
     renderChirps() {
         return this.state.chirps.map(chirp => {
-            return <ChirpTimelineCard key={chirp.id} chirp={chirp} />
+            return <ChirpCard key={chirp.id} chirp={chirp} />
         })
     }
 
     render() {
         return (
             <div className="row">
-            {this.renderChirps()}
+                {this.renderChirps()}
             </div>
         );
     }
