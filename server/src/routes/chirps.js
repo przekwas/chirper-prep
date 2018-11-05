@@ -1,20 +1,25 @@
 import { Router } from 'express';
-import chirpStore from '../chirpstore';
+import { getChirps, getChirp, addChirp } from '../db/db';
 
 let router = Router();
 
 router.get('/:id?', (req, res) => {
     let id = req.params.id;
     if (id) {
-        res.send(chirpStore.GetChirp(id));
+        getChirp(id)
+            .then(results => res.send(results))
+            .catch(e => console.log(e));
     } else {
-        res.send(chirpStore.GetChirps());
+        getChirps()
+            .then(results => res.send(results))
+            .catch(e => console.log(e));
     }
 });
 
 router.post('/', (req, res) => {
-    chirpStore.CreateChirp(req.body);
-    res.send('Chirp added!');
+    addChirp(req.body)
+        .then(results => res.send(results))
+        .catch(e => console.log(e));
 });
 
 router.put('/:id', (req, res) => {

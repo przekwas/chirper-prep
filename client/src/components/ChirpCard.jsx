@@ -9,7 +9,7 @@ const ChirpCard = (props) => {
                     Chirp ID: {props.chirp.id}
                 </div>
                 <div className="card-body">
-                    <h5 className="card-title">{props.chirp.user} chirped:</h5>
+                    <h5 className="card-title">{props.chirp.name} chirped:</h5>
                     <p className="card-text">{props.chirp.text}</p>
                     <Link to={`/single/${props.chirp.id}`} className="btn btn-primary">View this Chirp!</Link>
                 </div>

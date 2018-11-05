@@ -13,6 +13,7 @@ class SingleChirp extends Component {
         try {
             let res = await fetch(`/api/chirps/${this.props.match.params.id}`);
             let chirp = await res.json();
+            console.log(chirp);
             this.setState({ chirp });
         } catch (e) {
             console.log(e);
@@ -40,7 +41,7 @@ class SingleChirp extends Component {
                             <button class="btn btn-danger" onClick={() => this.handleDelete()}>X</button>
                         </div>
                         <div className="card-body">
-                            <h5 className="card-title">{this.state.chirp.user} chirped:</h5>
+                            <h5 className="card-title">{this.state.chirp.author} chirped:</h5>
                             <p className="card-text">{this.state.chirp.text}</p>
                             <div className="d-flex justify-content-between">
                                 <Link to={`/`} className="btn btn-primary">Back to All Chirps!</Link>

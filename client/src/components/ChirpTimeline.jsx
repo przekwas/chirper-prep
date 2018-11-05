@@ -12,16 +12,7 @@ export default class ChirpTimeline extends Component {
     async componentDidMount() {
         try {
             let res = await fetch('/api/chirps');
-            let data = await res.json();
-            let chirps = Object.keys(data).map(chirpId => {
-                return {
-                    id: chirpId,
-                    user: data[chirpId].user,
-                    text: data[chirpId].text
-                }
-            });
-            chirps.pop();
-            chirps.reverse();
+            let chirps = await res.json();
             this.setState({ chirps });
         } catch (e) {
             console.log(e);
